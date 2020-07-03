@@ -23,7 +23,7 @@ TCP_do(){
    (socat tcp4-listen:5001,fork STDOUT | \
 #   tee -a >(TCP_send) | \
    tee -a >(socat /dev/stdin tcp4:$A4:20002,forever) | \
-   xargs -d'\n' -IMSG sh -c  " echo 'ROUTE-->TCP: [MSG] {timestamp:\"'\`date +%s%3N\`'\"}' >> route.txt ")  #2>/dev/null 
+   xargs -d'\n' -IMSG sh -c  " echo 'ROUTE-->TCP: [MSG] {timestamp:\"'\`date +%s%3N\`'\"}' >> route.txt ")  2>/dev/null 
    
    if test ! $? -eq "0"
    then
